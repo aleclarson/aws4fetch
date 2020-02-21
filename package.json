@@ -7,6 +7,9 @@
   "browser": "dist/aws4fetch.umd.js",
   "author": "Michael Hart <michael.hart.au@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
   "devDependencies": {
     "@types/node": "^13.7.4",
     "@types/node-fetch": "^2.5.4",
