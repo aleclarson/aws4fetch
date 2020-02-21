@@ -2,7 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const encoder = new TextEncoder('utf-8');
+const fetch = require('node-fetch');
+const crypto = require('crypto');
+
+const { Request, Headers } = fetch;
 
 const HOST_SERVICES = {
   'appstream2': 'appstream',
@@ -235,24 +238,15 @@ class AwsV4Signer {
 }
 
 async function hmac(key, string, encoding) {
-  const cryptoKey = await crypto.subtle.importKey(
-    'raw',
-    typeof key === 'string' ? encoder.encode(key) : key,
-    { name: 'HMAC', hash: { name: 'SHA-256' } },
-    false,
-    ['sign']
-  );
-  const signed = await crypto.subtle.sign('HMAC', cryptoKey, encoder.encode(string));
-  return encoding === 'hex' ? buf2hex(signed) : signed
+  return crypto.createHmac('sha256', key)
+    .update(string)
+    .digest(encoding)
 }
 
 async function hash(content, encoding) {
-  const digest = await crypto.subtle.digest('SHA-256', typeof content === 'string' ? encoder.encode(content) : content);
-  return encoding === 'hex' ? buf2hex(digest) : digest
-}
-
-function buf2hex(buffer) {
-  return Array.prototype.map.call(new Uint8Array(buffer), x => ('0' + x.toString(16)).slice(-2)).join('')
+  return crypto.createHash('sha256')
+    .update(content)
+    .digest(encoding)
 }
 
 function encodeRfc3986(urlEncodedStr) {
