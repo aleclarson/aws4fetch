@@ -7,6 +7,9 @@
   "browser": "dist/aws4fetch.umd.js",
   "author": "Michael Hart <michael.hart.au@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  },
   "devDependencies": {
     "puppeteer": "^2.0.0",
     "rollup": "^1.27.3"
