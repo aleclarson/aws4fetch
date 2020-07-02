@@ -1,5 +1,5 @@
 {
-  "name": "aws4fetch",
+  "name": "@cush/aws4fetch",
   "version": "1.0.3",
   "description": "",
   "main": "dist/aws4fetch.cjs.js",
