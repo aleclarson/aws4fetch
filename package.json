@@ -6,6 +6,8 @@
   "module": "dist/aws4fetch.esm.js",
   "browser": "dist/aws4fetch.umd.js",
   "author": "Michael Hart <michael.hart.au@gmail.com>",
+  "repository": "aleclarson/aws4fetch",
+  "maintainers": ["Alec Larson <alec.stanford.larson@gmail.com>"],
   "license": "MIT",
   "dependencies": {
     "node-fetch": "^2.6.0"
